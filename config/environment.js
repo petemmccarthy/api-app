@@ -10,12 +10,21 @@ module.exports = function(environment) {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
-      }
+      },
+      API: {
+        HOST:"",
+        NAMESPACE:"api/secure"
+        // KEY:""
+      },
     },
-
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      ajax: {
+        trackMethods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
+        trackWebSockets: true,
+        ignoreURLs: []
+      }
     }
   };
 
@@ -25,6 +34,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.EmberENV.API.HOST = "http://salty-badlands-92678.herokuapp.com/api/";
   }
 
   if (environment === 'test') {
